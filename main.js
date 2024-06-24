@@ -14,6 +14,10 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     if (!jsonData || typeof jsonData !== 'object') {
       throw new Error('Invalid JSON format: Root element must be an object.');
     }
+    if (!jsonData.name || !jsonData.age) {
+      console.error('Missing required data in JSON file. Ensure the file contains both "name" and "age".');
+      return;
+    }
 
     // Add specific checks based on expected data structure
     if (!jsonData.requiredField) {
